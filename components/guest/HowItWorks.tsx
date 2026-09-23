@@ -6,8 +6,10 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { slidesData } from '@/utils/slidesData'
+import { useTranslation } from '@/i18n/useTranslation'
 
 const HowItWorks = () => {
+    const { t } = useTranslation()
     const [currentSlide, setCurrentSlide] = useState(0)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [swiperInstance, setSwiperInstance] = useState<any>(null)
@@ -37,8 +39,8 @@ const HowItWorks = () => {
             {/* Foreground content */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#010F1000] via-[#010F10] z-10 w-full px-4 flex flex-col items-center justify-center">
                 <div className=' w-full flex flex-col justify-center items-center gap-2 mb-6'>
-                    <h1 className="text-center text-[#F0F7F7] font-[900] md:text-[48px] text-[32px] font-orbitron leading-normal">How it works</h1>
-                    <p className='md:max-w-[60%]  w-full text-center text-[20px] font-[400] font-dmSans leading-[30px] text-[#F0F7F7]'>It&apos;s super simple how Blockopoly works. The flow has been designed to help you not to stress too much.</p>
+                    <h1 className="text-center text-[#F0F7F7] font-[900] md:text-[48px] text-[32px] font-orbitron leading-normal">{t('howItWorks.title')}</h1>
+                    <p className='md:max-w-[60%]  w-full text-center text-[20px] font-[400] font-dmSans leading-[30px] text-[#F0F7F7]'>{t('howItWorks.subtitle')}</p>
                 </div>
 
 
@@ -63,9 +65,9 @@ const HowItWorks = () => {
                                         <span className='text-[#73838B] font-dmSans font-[400] text-[14px]'>{item.outOf}</span>
                                     </div>
                                     <div className="flex flex-col">
-                                        <h2 className="md:text-[25px] text-[20px] text-[#FFFFFF] font-[800] font-orbitron uppercase">{item.title}</h2>
+                                        <h2 className="md:text-[25px] text-[20px] text-[#FFFFFF] font-[800] font-orbitron uppercase">{t(`howItWorks.steps.${index}.title`, item.title)}</h2>
                                         <p className="md:text-[18px] text-[17px] leading-[28px] text-[#BDBDBD] font-[400] font-dmSans mt-2">
-                                            {item.description}
+                                            {t(`howItWorks.steps.${index}.description`, item.description)}
                                         </p>
                                     </div>
                                 </div>
@@ -112,7 +114,7 @@ const HowItWorks = () => {
                             />
                         </svg>
                         <span className="absolute inset-0 flex items-center justify-center text-[#010F10] text-[18px] -tracking-[2%] font-orbitron font-[700] z-10">
-                            Let&apos;s Go!
+                            {t('howItWorks.cta')}
                         </span>
                     </button>
                 </div>
